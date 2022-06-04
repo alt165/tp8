@@ -11,7 +11,7 @@ def principal():
     dni_tarjeta = funciones.leer_tarjeta()#verificar que sea tarjeta valida y devolver los datos
     if dni_tarjeta != 0:
         dni_cliente = ""
-        while dni_cliente != clientes.cliente_1.dni:
+        while dni_cliente != dni_tarjeta:
             dni_cliente = input("Ingrese su dni")
     print("Ingrese su clave")
         
