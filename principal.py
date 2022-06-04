@@ -1,17 +1,20 @@
-import funciones
+import funciones, clientes
 
 def principal():
-        
+    
+    #Mostrar la pantalla inicial
     funciones.limita_entrada(funciones.mensaje_entrada(), "1")
-    #Se muestra la pantalla inicial y el cajero espera que se
-    #presione el 1 para permitir avanzar
+    #el cajero espera que se presione el 1 para permitir avanzar
     
     funciones.clear() #Borrar la pantalla
     print("Inserte su tarjeta")
-    #if funciones.leer_tarjeta():#verificar que sea tarjeta valida y devolver los datos
-#        pass
+    dni_tarjeta = funciones.leer_tarjeta()#verificar que sea tarjeta valida y devolver los datos
+    if dni_tarjeta != 0:
+        dni_cliente = ""
+        while dni_cliente != clientes.cliente_1.dni:
+            dni_cliente = input("Ingrese su dni")
+    print("Ingrese su clave")
         
-    #pedir_dni()
     #pedir_clave()
     #verificar_dni_clave()
     #si verificar dni y clave se ejecuto tres veces retener tarjeta

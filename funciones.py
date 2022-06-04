@@ -1,4 +1,4 @@
-import os, mensajes
+import os, mensajes, clientes
 
 def mensaje_entrada():
     """Esta función muestra el cartel con el nombre del banco
@@ -27,9 +27,10 @@ def clear():
         os.system("clear")
 
 def leer_tarjeta():
-    """Esta función devuelve True si la tarjeta es válida
-    si no lo es devuelve False"""
-    return True
+    """Esta función devuelve el dni almacenado
+    en la tarjeta, si la tarjeta es válida
+    si no devuelve 0"""
+    return clientes.cliente_1.dni #tomaremos como válida la tarjeta
 
 def verificar_clave(clave):
     """Esta función devuelve true si la clave es correcta"""
