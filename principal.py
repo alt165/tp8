@@ -2,29 +2,34 @@ import funciones
 
 def principal():
         
-    funciones.menu_inicial() #mostrar el menu de espera
-    funciones.clear()
+    funciones.limita_entrada(funciones.mensaje_entrada(), "1")
+    #Se muestra la pantalla inicial y el cajero espera que se
+    #presione el 1 para permitir avanzar
+    
+    funciones.clear() #Borrar la pantalla
     print("Inserte su tarjeta")
-    if funciones.leer_tarjeta():#verificar que sea tarjeta valida y devolver los datos
-        pass
+    #if funciones.leer_tarjeta():#verificar que sea tarjeta valida y devolver los datos
+#        pass
         
-    pedir_dni()
-    pedir_clave()
-    verificar_dni_clave()
+    #pedir_dni()
+    #pedir_clave()
+    #verificar_dni_clave()
     #si verificar dni y clave se ejecuto tres veces retener tarjeta
     #else:
-    while seguir:
-        mostrar_menu()
+    #while seguir:
+    #    mostrar_menu()
         #tomar opcion de menu
-        if opcion extraccion:
-            monto
-            funcion_extraccion()
-            funcion_continuar()
-        elif opcion == consultas:
-            funcion_consultas()
-            funcion_continuar()
-        elif opcion == transferencias:
-            funcion_transferencias()
-            funcion_continuar()
-        else:
-            salir()
+    #    if opcion extraccion:
+     #       monto
+      #      funcion_extraccion()
+       #     funcion_continuar()
+        #elif opcion == consultas:
+        #    funcion_consultas()
+         #   funcion_continuar()
+ #       elif opcion == transferencias:
+  #          funcion_transferencias()
+   #         funcion_continuar()
+    #    else:
+     #       salir()
+if __name__ == "__main__":
+    principal()
