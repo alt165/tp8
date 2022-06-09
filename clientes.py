@@ -9,3 +9,6 @@ class Cliente:
         self.saldo = saldo
 
 cliente_1 = Cliente("Roberto Arlt", "12345678", "12345", 85000)
+cliente_2 = Cliente("Roberto Sanchez", "1112223", "45678",20000)
+
+clientes = [cliente_1, cliente_2]
