@@ -53,3 +53,5 @@ def obtener_clave(dni_cliente):
     cliente = obtener_cliente(dni_cliente)
     return cliente.clave
 
+
+

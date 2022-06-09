@@ -1,4 +1,4 @@
-import funciones, clientes
+import funciones, clientes, mensajes, consultas
 
 def principal():
     
@@ -25,7 +25,7 @@ def principal():
     else:
         permite_seguir = False # No se ingresó una tarjeta válida
     
-    clave_almacenada = funciones.obtener_clave
+    clave_almacenada = funciones.obtener_clave(dni_cliente)
     intentos_posibles = 3
     intento = 0
     clave_cliente = ""
@@ -35,18 +35,22 @@ def principal():
     if intento == 2:
         permite_seguir = False
         retener_tarjeta = True
-    #if verificar_clave(dni_cliente, 3):
-     #   clave_cliente = input(print("Ingrese su clave:"))
-    #print(verificar_clave(clave_cliente)) 
     cliente = funciones.obtener_cliente(dni_cliente)
     print(cliente.saldo)
-
-    #pedir_clave()
-    #verificar_dni_clave()
-    #si verificar dni y clave se ejecuto tres veces retener tarjeta
-    #else:
-    #while seguir:
-    #    mostrar_menu()
+    continuar=True
+    while permite_seguir and continuar:
+        funciones.clear()
+        print(mensajes.menu())
+        opcion=input('')
+        if opcion == "1":
+            consultas.consultas(dni_cliente)    
+        elif opcion == "2":
+            print('2')
+        elif opcion == "3":
+            print('3')
+        elif opcion == "4":
+            print('4')
+            continuar=False
         #tomar opcion de menu
     #    if opcion extraccion:
      #       monto
@@ -60,6 +64,7 @@ def principal():
    #         funcion_continuar()
     #    else:
      #       salir()
+     
 if __name__ == "__main__":
     principal()
     

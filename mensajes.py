@@ -11,3 +11,25 @@ def nombre_interbanca():
                                                        
                                                       \n"""
     return interbanca
+
+def menu():
+    menu= '''
+    Seleccione la opción deseada
+    
+    1. Consultas.              2. Extracciones.
+    3. Transferencias.         4. Salir.  \n'''
+    return menu
+
+def menu_consultas():
+    consultas= '''
+    ¿Que operación desea realizar?
+    
+    1. Saldo.              2. Movimientos.  \n'''
+    return consultas
+
+def elegir_moneda():
+    moneda= '''
+    Seleccion un tipo moneda:
+    
+    1. Pesos.              2. Soles.  \n'''
+    return moneda
