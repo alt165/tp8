@@ -35,7 +35,7 @@ def principal():
     if intento == 2:
         permite_seguir = False
         retener_tarjeta = True
-    cliente = funciones.obtener_cliente(dni_cliente)
+    cliente=funciones.obtener_cliente(dni_cliente)
     print(cliente.saldo)
     continuar=True
     while permite_seguir and continuar:
@@ -43,7 +43,16 @@ def principal():
         print(mensajes.menu())
         opcion=input('')
         if opcion == "1":
-            consultas.consultas(dni_cliente)    
+            print(mensajes.menu_consultas())
+            operacion=input()
+            funciones.clear()
+            saldo=consultas.consultar_saldo(cliente.dni)
+            print(saldo)
+            #imprimir=input('Pulse 1 si desea imprimir el ticket')
+            #if imprimir =='1':
+                #aca iria el archivo para simular el ticket
+            #aca deberia volver al menu.
+            
         elif opcion == "2":
             print('2')
         elif opcion == "3":
