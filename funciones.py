@@ -46,11 +46,10 @@ def obtener_cliente(dni):
     return cliente
 
 
-def verificar_clave(dni_cliente, intentos):
+def obtener_clave(dni_cliente):
     """verificar_clave()
-    Esta función devuelve true si la clave es correcta
-    y false si no lo es
+    Esta función busca la clave almacenada en la lista de clientes
     """    
-    
-    return clave == clientes.cliente_1.clave
+    cliente = obtener_cliente(dni_cliente)
+    return cliente.clave
 
