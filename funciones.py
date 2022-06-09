@@ -1,3 +1,4 @@
+from http import client
 import os, mensajes, clientes
 
 def mensaje_entrada():
@@ -26,13 +27,30 @@ def clear():
     else:
         os.system("clear")
 
+
 def leer_tarjeta():
     """Esta función devuelve el dni almacenado
-    en la tarjeta, si la tarjeta es válida
+    en la tarjeta si la tarjeta es válida
     si no devuelve 0"""
-    return clientes.cliente_1.dni #tomaremos como válida la tarjeta
+    return "12345678" 
+    # tomaremos como válida la tarjeta. No está implementada la función
 
-def verificar_clave(clave):
-    """Esta función devuelve true si la clave es correcta"""
-    pass
+def obtener_cliente(dni):
+    """
+    obtener_cliente(str) -> class
+    busca por el dni un cliente en la lista de clientes y lo devuelve
+    """
+    for element in clientes.clientes:
+        if element.dni == dni:
+            cliente = element
+    return cliente
+
+
+def verificar_clave(dni_cliente, intentos):
+    """verificar_clave()
+    Esta función devuelve true si la clave es correcta
+    y false si no lo es
+    """    
+    
+    return clave == clientes.cliente_1.clave
 
