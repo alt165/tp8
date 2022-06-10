@@ -1,3 +1,6 @@
+import csv
+
+
 class Cliente:
     """Clase de tipo cliente con los datos
     necesarios para identificarlos
@@ -8,7 +11,16 @@ class Cliente:
         self.clave = clave
         self.saldo = saldo
 
-cliente_1 = Cliente("Roberto Arlt", "12345678", "12345", 85000)
-cliente_2 = Cliente("Roberto Sanchez", "1112223", "45678",20000)
 
-clientes = [cliente_1, cliente_2]
+def cliente(dni):
+    """Esta funcion busca en el archivo de clientes y devuelve un objeto
+    con los atributos del cliente encontrado"""
+    coincidencia=[]
+    with open("lista_de_clientes.csv", 'r') as archivo:
+        mis_clientes = csv.reader(archivo)
+        for line in mis_clientes:
+            if line[1] == dni:
+                coincidencia = line
+    
+    cliente_encontrado = Cliente(coincidencia[0],coincidencia[1],coincidencia[2],coincidencia[3])
+    return cliente_encontrado
