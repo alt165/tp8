@@ -60,7 +60,9 @@ def principal():
             operacion=input()
             funciones.clear()
             saldo=consultas.consultar_saldo(cliente.dni)
-            print(saldo)
+            ticket = funciones.formatear_ticket("\tSu saldo es: ", saldo)
+            print(ticket)
+            mensajes.quiere_continuar()
             #imprimir=input('Pulse 1 si desea imprimir el ticket')
             #if imprimir =='1':
                 #aca iria el archivo para simular el ticket

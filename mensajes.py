@@ -1,3 +1,5 @@
+import datetime
+
 def nombre_interbanca():
     """Funcíon que devuelve el cartel con el nombre del banco"""
     interbanca = """
@@ -34,4 +36,21 @@ def elegir_moneda():
     1. Pesos.              2. Soles.  \n'''
     return moneda
 
+def encabezado_ticket():
+    encabezado = """
+    ******************************
+            Interbanca
+    ******************************\n
+       """
+    fecha_hora = datetime.datetime.now()
+    fecha_hora = fecha_hora.strftime("%c")    
+    encabezado = encabezado + fecha_hora + "\n\n"
+    
 
+    return encabezado
+
+def quiere_continuar():
+    continuar = True
+    while continuar:
+        input("Para continuar presione una tecla")
+        continuar = False

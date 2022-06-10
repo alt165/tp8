@@ -11,9 +11,9 @@ def consultar_saldo(dni):
     cliente=clientes.cliente(dni)
     saldo=cliente.saldo
     if moneda=='1':
-        pass
+        saldo = str(saldo) + " Pesos"
     elif moneda=='2':
-        saldo=conversion_moneda_a_soles(saldo)
+        saldo=str(conversion_moneda_a_soles(saldo)) + " Soles"
     return saldo
     
 def conversion_moneda_a_soles(saldo):

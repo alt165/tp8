@@ -1,4 +1,3 @@
-from http import client
 import os, mensajes, clientes
 
 def mensaje_entrada():
@@ -34,6 +33,8 @@ def leer_tarjeta():
     si no devuelve 0"""
     return "12345678" 
     # tomaremos como válida la tarjeta. No está implementada la función
+    # no tenemos forma de leer una tarjeta, solo devolvemos el dni del
+    # cliente que elegimos para trabajar
 
 
 def obtener_clave(dni_cliente):
@@ -43,5 +44,19 @@ def obtener_clave(dni_cliente):
     cliente = clientes.cliente(dni_cliente)
     return cliente.clave
 
+def formatear_ticket(texto1, texto2):
+    """formatear_ticket(str, str) -> str
+    esta funcion devuelve un string con el texto formateado de un ticket
+     """
+    ticket = mensajes.encabezado_ticket()
+    ticket = ticket + texto1
+    ticket = "\n" + ticket + texto2 + "\n"
 
+    return ticket
+
+
+def guardar_ticket(archivo, ticket):
+    """guardar_ticket(str, str) -> file
+    esta funcion agrega texto a un archivo con todos los tickets impresos
+    """
 
