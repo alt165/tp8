@@ -18,7 +18,7 @@ def principal():
     # esta variable se actualizará al verificar las condiciones que permiten
      # continuar utilizando el cajero
     
-    if dni_tarjeta != 0: 
+    if dni_tarjeta != 0: #si la tarjeta es válida
         dni_cliente = ""
         intentos_posibles = 3
         intento = 0
@@ -32,43 +32,30 @@ def principal():
     else:
         permite_seguir = False # No se ingresó una tarjeta válida
     
-<<<<<<< HEAD
-    if permite_seguir: #si la tarjeta es valida y el dni es correcto
+    if permite_seguir: #si la tarjeta es valida y el dni es correcto, obtener clave
         clave_almacenada = funciones.obtener_clave(dni_cliente)
+        #buscar clave almacenada
         intentos_posibles = 3
         intento = 0
         clave_cliente = ""
         while clave_cliente != clave_almacenada and intento < intentos_posibles:
             clave_cliente = input("Ingrese su clave: ")
             intento = intento + 1
-        if intento > intentos_posibles:
+        if intento > intentos_posibles: 
+            #luego de tres intentos retener tarjeta y finalizar
             print("Ha superado la cantidad de ingresos posibles")
             print("Su tarjeta ha sido retenida")
             permite_seguir = False
             retener_tarjeta = True
         cliente = clientes.cliente(dni_cliente)
-        print(cliente.saldo)
-    
-=======
-    clave_almacenada = funciones.obtener_clave(dni_cliente)
-    intentos_posibles = 3
-    intento = 0
-    clave_cliente = ""
-    while clave_cliente != clave_almacenada and intento < intentos_posibles:
-        clave_cliente = input("Ingrese su clave: ")
-        intento = intento + 1
-    if intento == 2:
-        permite_seguir = False
-        retener_tarjeta = True
-    cliente=funciones.obtener_cliente(dni_cliente)
-    print(cliente.saldo)
->>>>>>> 4e9dd4f4f1992e6bb9f6540fb863e005c495e9b8
-    continuar=True
+            
+    continuar=True # solo se actualiza cuando el cliente quiere salir
     while permite_seguir and continuar:
         funciones.clear()
         print(mensajes.menu())
         opcion=input('')
         if opcion == "1":
+            funciones.clear()
             print(mensajes.menu_consultas())
             operacion=input()
             funciones.clear()
