@@ -8,7 +8,7 @@ import funciones, clientes, mensajes
 def consultar_saldo(dni):
     print(mensajes.elegir_moneda())
     moneda=input()
-    cliente=funciones.obtener_cliente(dni.cliente)
+    cliente=clientes.cliente(dni)
     saldo=cliente.saldo
     if moneda=='1':
         pass
@@ -17,7 +17,8 @@ def consultar_saldo(dni):
     return saldo
     
 def conversion_moneda_a_soles(saldo):
-    conversion = 0.030834509*saldo
+    conversion = 0.030834509* float(saldo)
+    conversion = round(conversion, 2)
     return conversion
 
 
