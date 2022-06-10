@@ -5,41 +5,21 @@ import funciones, clientes, mensajes
 
 #nota: todas las funciones que impliquen cambios en el saldo afectarian a movimientos.
 
-def tipo_moneda():
-    print('¿Qué tipo de moneda desea utilizar?')
-    print('Pulse 1 para seleccionar PESOS.')
-    print('Pulse 2 para seleccionar SOLES.')
-    moneda=int(input())
-    return moneda
-
-def saldo(dni):
-    #esta funcion guardaria los saldos, y una vez que se invoca una extracion deberia cambiar.
-    cliente=funciones.obtener_cliente(dni)
+def consultar_saldo(dni):
+    print(mensajes.elegir_moneda())
+    moneda=input()
+    cliente=funciones.obtener_cliente(dni.cliente)
     saldo=cliente.saldo
+    if moneda=='1':
+        pass
+    elif moneda=='2':
+        saldo=conversion_moneda_a_soles(saldo)
     return saldo
-
-def saldo_disponible(moneda):
-    if moneda==2:
-        saldo_disponible=conversion_moneda_a_soles(saldo)
-    else:
-        saldo_disponible=saldo
     
-    print('Pulse 1 para ver su saldo por pantalla.')
-    print('Pulse 2 para imprimir un ticket.')
-    visualizacion=int(input())
-    if visualizacion == 1:
-        print(f'Su saldo disponible es de {saldo_disponible}')
-    else:
-        imprimir_ticket
-    
-#def conversion_moneda_a_soles(saldo)
- #   conversion = 0.030834509*saldo
- #   redondeo = round(conversion, 2)
-  #  return redondeo
+def conversion_moneda_a_soles(saldo):
+    conversion = 0.030834509*saldo
+    return conversion
 
-def movimientos():
-    #funcion que guarda los movimientos de la cuenta.
-    return movimientos
 
 def ultimos_movimientos():
     
@@ -54,24 +34,12 @@ def ultimos_movimientos():
     else:
         imprimir_ticket
     
+def movimientos():
+    #funcion que guarda los movimientos de la cuenta.
+    return movimientos
 
-def consultas(dni):
-    
-    print(mensajes.menu_consultas())
-    operacion=input()
-    funciones.clear()
-    print(mensajes.elegir_moneda())
-    moneda=input()
-    #if operacion=="1":
-     #   saldo=(saldo_disponible(dni))
-        
-      #  if moneda=="1":
-       #     print(saldo
-        
-        
-    #elif opcion=="2":
-     #  resultado=ultimos_movimientos()
-    #return resultado
+
+
         
         
                 
