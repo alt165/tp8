@@ -35,22 +35,12 @@ def leer_tarjeta():
     return "12345678" 
     # tomaremos como válida la tarjeta. No está implementada la función
 
-def obtener_cliente(dni):
-    """
-    obtener_cliente(str) -> class
-    busca por el dni un cliente en la lista de clientes y lo devuelve
-    """
-    for element in clientes.clientes:
-        if element.dni == dni:
-            cliente = element
-    return cliente
-
 
 def obtener_clave(dni_cliente):
     """verificar_clave()
     Esta función busca la clave almacenada en la lista de clientes
     """    
-    cliente = obtener_cliente(dni_cliente)
+    cliente = clientes.cliente(dni_cliente)
     return cliente.clave
 
 
