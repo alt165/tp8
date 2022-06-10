@@ -57,7 +57,7 @@ def principal():
         if opcion == "1":
             funciones.clear()
             print(mensajes.menu_consultas())
-            operacion=input()
+            operacion=input() # ESTA OPCION NO LA ESTAMOS USANDO EN NINGUN LADO CUALQUIER OPERACION NOS LLEVA A CONSULTAR EL SALDO
             funciones.clear()
             saldo=consultas.consultar_saldo(cliente.dni)
             ticket = funciones.formatear_ticket("\tSu saldo es: ", saldo)
