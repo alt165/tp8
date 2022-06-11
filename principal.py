@@ -74,8 +74,9 @@ def principal():
             
         elif opcion == "3":
             print('3')
+            
         elif opcion == "4":
-            print('4')
+            print(mensajes.mensaje_salir())
             continuar=False
         #tomar opcion de menu
     #    if opcion extraccion:
