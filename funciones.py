@@ -59,4 +59,6 @@ def guardar_ticket(archivo, ticket):
     """guardar_ticket(str, str) -> file
     esta funcion agrega texto a un archivo con todos los tickets impresos
     """
+    
+
 
