@@ -1,4 +1,4 @@
-import funciones, clientes, mensajes, consultas
+import funciones, clientes, mensajes, consultas, extracciones
 
 def principal():
     
@@ -69,7 +69,9 @@ def principal():
             #aca deberia volver al menu.
             
         elif opcion == "2":
-            print('2')
+            funciones.clear()
+            extraccion=extracciones.extraccion(cliente.dni)
+            
         elif opcion == "3":
             print('3')
         elif opcion == "4":
