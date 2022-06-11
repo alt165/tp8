@@ -39,14 +39,12 @@ def elegir_moneda():
 def encabezado_ticket():
     encabezado = """
     ******************************
-            Interbanca
+             Interbanca
     ******************************\n
        """
     fecha_hora = datetime.datetime.now()
     fecha_hora = fecha_hora.strftime("%c")    
     encabezado = encabezado + fecha_hora + "\n\n"
-    
-
     return encabezado
 
 def quiere_continuar():
@@ -54,3 +52,14 @@ def quiere_continuar():
     while continuar:
         input("Para continuar presione una tecla ")
         continuar = False
+
+def mensaje_salir():
+    salida= """
+    ******************************
+              Interbanca
+    ******************************
+    Gracias por utilizar el cajero
+    
+     - Puede retirar su tarjeta - \n
+    """
+    return salida
