@@ -31,7 +31,7 @@ def menu_consultas():
 
 def elegir_moneda():
     moneda= '''
-    Seleccion un tipo moneda:
+    Seleccione un tipo moneda:
     
     1. Pesos.              2. Soles.  \n'''
     return moneda
@@ -52,5 +52,5 @@ def encabezado_ticket():
 def quiere_continuar():
     continuar = True
     while continuar:
-        input("Para continuar presione una tecla")
+        input("Para continuar presione una tecla ")
         continuar = False
