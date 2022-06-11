@@ -21,7 +21,6 @@ def conversion_moneda_a_soles(saldo):
     conversion = round(conversion, 2)
     return conversion
 
-
 def ultimos_movimientos():
     
     print('Pulse 1 para ver su saldo por pantalla.')
