@@ -63,10 +63,7 @@ def principal():
             ticket = funciones.formatear_ticket("\tSu saldo es: ", saldo)
             print(ticket)
             mensajes.quiere_continuar()
-            #imprimir=input('Pulse 1 si desea imprimir el ticket')
-            #if imprimir =='1':
-                #aca iria el archivo para simular el ticket
-            #aca deberia volver al menu.
+        
             
         elif opcion == "2":
             funciones.clear()
@@ -74,7 +71,6 @@ def principal():
             
         elif opcion == "3":
             funciones.clear()
-            saldo=seleccionar_moneda
             
         elif opcion == "4":
             print(mensajes.mensaje_salir())
