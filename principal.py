@@ -73,7 +73,8 @@ def principal():
             extraccion=extracciones.extraccion(cliente.dni)
             
         elif opcion == "3":
-            print('3')
+            funciones.clear()
+            saldo=seleccionar_moneda
             
         elif opcion == "4":
             print(mensajes.mensaje_salir())
