@@ -71,6 +71,8 @@ def principal():
             
         elif opcion == "3":
             funciones.clear()
+            transferencia=transferencias.transferencia(cliente.dni)
+            mensajes.quiere_continuar()
             
         elif opcion == "4":
             print(mensajes.mensaje_salir())
