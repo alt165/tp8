@@ -4,13 +4,7 @@ Función extraciones del menú perteneciente al Cajero Automatico InterBanca TP 
 import funciones, clientes, mensajes
 
 def extraccion(dni):
-    print(mensajes.elegir_moneda())
-    moneda=input()
-    cliente=clientes.cliente(dni)
-    if moneda=='1':
-        saldo = int(cliente.saldo)
-    elif moneda=='2':
-        saldo=conversion_moneda_a_soles(cliente.saldo)
+    saldo=funciones.seleccionar_moneda(dni)
     intento=0
     while intento < 2:
         monto=int(input('Ingrese el monto a retirar '))
