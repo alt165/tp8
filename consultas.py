@@ -13,13 +13,9 @@ def consultar_saldo(dni):
     if moneda=='1':
         saldo = str(saldo) + " Pesos"
     elif moneda=='2':
-        saldo=str(conversion_moneda_a_soles(saldo)) + " Soles"
+        saldo=str(funciones.conversion_moneda_a_soles(saldo)) + " Soles"
     return saldo
     
-def conversion_moneda_a_soles(saldo):
-    conversion = 0.030834509* float(saldo)
-    conversion = round(conversion, 2)
-    return conversion
 
 def ultimos_movimientos():
     
