@@ -60,5 +60,12 @@ def guardar_ticket(archivo, ticket):
     esta funcion agrega texto a un archivo con todos los tickets impresos
     """
     
-
-
+def selecionar_moneda(dni)
+    print(mensajes.elegir_moneda())
+    moneda=input()
+    cliente=clientes.cliente(dni)
+    if moneda=='1':
+        saldo = int(cliente.saldo)
+    elif moneda=='2':
+        saldo=conversion_moneda_a_soles(cliente.saldo)
+    return saldo
