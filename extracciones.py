@@ -12,6 +12,7 @@ def extraccion(dni):
         if monto <= saldo:
             cliente.saldo-=monto #no funciona, saldo no disminuye y es str contra int.
             intento+=1
+            print('Retire su dinero')
         elif monto > saldo:
             print('No posee saldo suficiente en la cuenta.') 
             if intento < 2:
