@@ -14,10 +14,11 @@ def extraccion(dni):
             intento+=1
         elif monto > saldo:
             print('No posee saldo suficiente en la cuenta.') #no se como hacer para que en la segunda vez ingresado un monto mayor no muestre las opciones siguientes. 
-            print('1.Modificar monto.           2.Volver al menú de opciones.')
-            eleccion=input()
-            if eleccion =='2':
-                intento+=1    
+            if intento < 2:
+                print('1.Modificar monto.           2.Volver al menú de opciones.')
+                eleccion=input()
+                if eleccion =='2':
+                    intento+=1    
             
                 
             
