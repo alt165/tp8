@@ -1,0 +1,24 @@
+```mermaid
+graph 
+    Nombre[Diagrama de flujo de la función EXTRACCIONES]
+    A([Inicio]) --> B(saldo=funciones.seleccionar_moneda) 
+    B --> C(intento=0)
+    C --> D[while intento < 2]
+    D --> E[/"monto=int(input('Ingrese el monto a retirar'))"/]
+    E --> F(intento+=1)
+    F --> G{monto <= saldo}
+    G --> |si| H[cliente.saldo-=monto]
+    H --> I(intento+=1)
+    I --> J("print('Retire su dinero')")
+    G --> |no| K{monto>saldo}
+    K --> |si| L("print('No posse saldo suficiente')")
+    L --> M{intento < 2}
+    M --> |si| N("print('1.Modificar monto.  2.Volver al menu')")
+    N --> O[/"eleccion=input()"/]
+    O --> P{eleccion=='2'}
+    P --> |si| Q[intento+=1]
+    Q --> R((Fin))
+    M --> R
+    J --> R
+    P --> |no| D
+  ```
