@@ -77,19 +77,7 @@ def principal():
         elif opcion == "4":
             print(mensajes.mensaje_salir())
             continuar=False
-        #tomar opcion de menu
-    #    if opcion extraccion:
-     #       monto
-      #      funcion_extraccion()
-       #     funcion_continuar()
-        #elif opcion == consultas:
-        #    funcion_consultas()
-         #   funcion_continuar()
- #       elif opcion == transferencias:
-  #          funcion_transferencias()
-   #         funcion_continuar()
-    #    else:
-     #       salir()
+
      
 if __name__ == "__main__":
     principal()
