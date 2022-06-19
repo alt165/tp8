@@ -59,11 +59,13 @@ def principal():
             print(mensajes.menu_consultas())
             operacion=input() # ESTA OPCION NO LA ESTAMOS USANDO EN NINGUN LADO CUALQUIER OPERACION NOS LLEVA A CONSULTAR EL SALDO
             funciones.clear()
-            saldo=consultas.consultar_saldo(cliente.dni)
-            ticket = funciones.formatear_ticket("\tSu saldo es: ", saldo)
-            print(ticket)
-            mensajes.quiere_continuar()
-        
+            if operacion=='1':
+                saldo=consultas.consultar_saldo(cliente.dni)
+                ticket = funciones.formatear_ticket("\tSu saldo es: ", saldo)
+                print(ticket)
+                mensajes.quiere_continuar()
+            elif operacion=='2':
+                #ultimos movimientos 
             
         elif opcion == "2":
             funciones.clear()
