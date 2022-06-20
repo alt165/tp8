@@ -16,18 +16,27 @@ def consultar_saldo(dni):
     return saldo
     
 
-def ultimos_movimientos():
-    
-    print('Pulse 1 para ver su saldo por pantalla.')
-    print('Pulse 2 para imprimir un ticket.')
-    visualizacion=int(input())
-    if visualizacion == 1:
-        ultimos_movimientos=movimientos()
-        ### aca podria existir una operacion que tome solo los ultimos 10 movimietos.
-        print('Sus ultimos 10 movimientos fueron:')
-        print(f'{ultimos_movimientos}')
+def ultimos_movimientos(dni):
+    """ultimos_movimientos(str)->str
+    esta funcion busca en el archivo con dni.csv los ultimos 10 movimientos
+    del cliente y los retorna como string
+    """    
+    ruta = "./movimientos_clientes/" + dni + ".csv"
+    with open(ruta, "r") as movimientos:
+        archivo = movimientos.readlines()
+    largo = len(archivo)
+    resultado = funciones.formatear_ticket("Fecha     Movimiento    Saldo    Monto"," ")
+    resultado
+    if largo > 10:
+        largo = -10
     else:
-        imprimir_ticket
+        largo = largo * -1
+    while largo < 0:
+        resultado = resultado + archivo[largo]
+        largo = largo + 1
+    return resultado
+
+
     
 def movimientos():
     #funcion que guarda los movimientos de la cuenta.
