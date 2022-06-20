@@ -8,6 +8,7 @@ def extraccion(dni, monto):
     saldo = funciones.obtener_saldo(dni)
     ticket = funciones.formatear_ticket(f"Retiró {monto}\n", f"Su saldo es: {saldo}")
     print(ticket)
+    return ticket
     
 
             

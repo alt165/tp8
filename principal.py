@@ -1,4 +1,5 @@
-import funciones, clientes, mensajes, consultas, extracciones
+import funciones, clientes, mensajes, consultas, extracciones, transferencias
+
 
 def principal():
     
@@ -76,17 +77,27 @@ def principal():
             funciones.clear()
             monto = input("Ingrese el monto a extraer: ")
             try:
-                extraccion=extracciones.extraccion(cliente.dni, monto)
+                ticket = extracciones.extraccion(cliente.dni, monto)
                 if mensajes.quiere_imprimir_ticket():
                     funciones.guardar_ticket(ticket)
-            except:
+            except funciones.saldo_insuficiente_exception:
                 print("El monto seleccionado es mayor al saldo")
                 input("Presione enter para continuar")
             
         elif opcion == "3":
             funciones.clear()
-            transferencia=transferencias.transferencia(cliente.dni)
-            mensajes.quiere_continuar()
+            monto = input("Ingrese el monto a tranferir: ")
+            destino = input("Ingrese la cuenta destino: ")
+            # no se va a verificar la cuenta destino, cualquier ingreso lo tomamos como válido 
+            try:
+                ticket = transferencias.transferencia(cliente.dni, monto, destino)
+                if mensajes.quiere_imprimir_ticket():
+                    funciones.guardar_ticket(ticket)
+            except funciones.saldo_insuficiente_exception:
+                print("El monto seleccionado es mayor al saldo")
+                input("Presione enter para continuar")
+            
+    
             
         elif opcion == "4":
             print(mensajes.mensaje_salir())

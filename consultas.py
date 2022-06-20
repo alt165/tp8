@@ -31,7 +31,7 @@ def ultimos_movimientos(dni):
         largo = -10
     else:
         largo = largo * -1
-        indice = -1
+    indice = -1
     while indice >= largo:
         resultado = resultado + archivo[indice]
         indice = indice -1
