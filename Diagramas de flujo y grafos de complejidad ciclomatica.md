@@ -55,11 +55,54 @@ Calculos complejidad cilomatica función EXTRACCIONES:
 
 -V(G)=Regiones=4.\
 -V(G)=A-N+2=20-18+2=4.\
--V(G)=P+1=3+1=4.\
+-V(G)=P+1=3+1=4.
 
 Caminos posibles función EXTRACCIONES:
 
 -1-2-3-4-5-6-7-8-9-10-11\
 -1-2-3-4-5-6-7-12-13-14-15-16-17-18-11\
 -1-2-3-4-5-6-7-12-13-14-11\
--1-2-3-4-5-6-7-12-13-14-15-16-17-4-5-6-7-12-13-14-11\
+-1-2-3-4-5-6-7-12-13-14-15-16-17-4-5-6-7-12-13-14-11
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Diagrama de flujo de la función CLIENTES:
+
+```mermaid 
+graph 
+    A((Inicio)) --> B["coincidencia=[]"]
+    B-->C[with open]
+    C-->D["mis clientes = cvs.reader(archivo)"]
+    D-->E[for line in mis_clientes:]
+    E-->F{"line[1]==dni"}
+    F-->|si|G[coincidencia = line]
+    G-->I["cliente_encontrado=cliente(coincidencia[0],(coincidencia[1],(coincidencia[2],(coincidencia[3])"]
+    I-->H((FIN - return))
+```
+
+Grafo de complejidad ciclomatica función CLIENTES:
+
+```mermaid
+graph 
+    A((1)) -->|I| B((2))
+    B-->|II|C((3))
+    C-->|III|D((4))
+    D-->|IV|E((5))
+    E-->|V|F((6))
+    F-->|si-VI|G((7))
+    G-->|VII|I((8))
+    I-->|VIII|H((9))
+
+style F fill:#909
+```
+Calculos complejidad cilomatica función CLIENTES:
+
+-V(G)=Regiones=1.\
+-V(G)=A-N+2=8-9+2=1.\
+-V(G)=P+1=1+1=2.
+
+Caminos posibles función CLIENTES:
+
+-1-2-3-4-5-6-7-8-9
+
+
