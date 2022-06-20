@@ -1,4 +1,7 @@
-import os, mensajes, clientes, csv
+import os, mensajes, clientes, csv, datetime
+
+class saldo_insuficiente_exception(Exception):
+    pass
 
 def mensaje_entrada():
     """Esta función muestra el cartel con el nombre del banco
@@ -92,23 +95,31 @@ def modificar_saldo(dni, movimiento, monto):
     """esta funcion toma los datos de entrada y los agrega el final del
     archivo con los movimientos de cada cliente, los movimientos posibles
     son deposito == "1", extraccion == "2" y transferencia == "3".
+    si la extraccion o transferencia es por un monto mayor al saldo
+    se levanta una excepción.
     """
     ruta = "./movimientos_clientes/" + dni + ".csv"
-    with open("ruta", 'r') as f:
-        saldo = f.readlines()[-1]
-    print(saldo[-2])
-
     fecha_hora = datetime.datetime.now()
     fecha_hora = fecha_hora.strftime("%m/%d/%Y %H:%M")
+    saldo = int(obtener_saldo(dni))
+    monto = int(monto)
     if movimiento == "1":
         movimiento = "deposito"
-        #saldo = saldo + monto
+        saldo = saldo + monto
     elif movimiento == "2":
+        if monto > saldo:
+            raise saldo_insuficiente_exception
         movimiento = "extraccion"
-        #saldo = saldo - monto
+        saldo = saldo - monto
     elif movimiento == "3":
+        if monto > saldo:
+            raise saldo_insuficiente_exception
         movimiento = "transferencia"
-        #saldo = saldo - monto
-    #with open(ruta, 'a') as archivo:
+        saldo = saldo - monto
+    
+    linea = [fecha_hora, movimiento, saldo, monto]
+    with open(ruta, 'a') as archivo:
+        escritor = csv.writer(archivo)
+        escritor.writerow(linea)
 
 
