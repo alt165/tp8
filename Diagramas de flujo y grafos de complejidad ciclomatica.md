@@ -441,7 +441,6 @@ graph
     f-->|VI|i
 
 style e fill:#909
-
 ```
 
 Calculos complejidad cilomatica función SELECCIONAR_MONEDA del apartado funciones:
@@ -474,6 +473,7 @@ graph
     b-->|II|c((3))
     c-->|III|d((4))
 ```
+
 Calculos complejidad cilomatica función CONVERSION_MONEDA_A_SOLES del apartado funciones:
 
 -V(G)=Regiones=1.\
@@ -514,17 +514,105 @@ graph
     g-->|VIII|h((8))
 
 style e fill:#909
+```
 
 Calculos complejidad cilomatica función OBTENER_SALDO del apartado funciones:
 
 -V(G)=Regiones=2.\
--V(G)=A-N+2=8-8+2=2..\
+-V(G)=A-N+2=8-8+2=2.\
 -V(G)=P+1=1+1=2.
 
 Caminos posibles función OBTENER_SALDO del apartado funciones:
 
 -1-2-3-4-5-6-7-8
 -1-2-3-4-5-6-5-6-7-8
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Diagrama de flujo de la función MODIFICAR_SALDO del apartado funciones:
+
+```mermaid
+graph
+    a((inicio))-->b["ruta = './movimientos_clientes/' + dni + '.csv'"]
+    b-->c["fecha_hora = datetime.datetime.now()"]
+    c-->d["fecha_hora = fecha_hora.strftime('%m/%d/%Y %H:%M')"]
+    d-->e["saldo = int(obtener_saldo(dni))"]
+    e-->f["monto = int(monto)"]
+    f-->g{"movimiento=='1'"}
+    g-->|si|h["movimiento = "deposito""]
+    h-->i["saldo = saldo + monto"]
+    i-->z["linea = [fecha_hora, movimiento, saldo, monto]"]
+    g-->|sino|j{"movimiento =='2'"}
+    j-->|si|k{monto>saldo:}
+    k-->|si|l[raise saldo_insuficiente_exception]
+    k-->|no|m["movimiento='extraccion'"]
+    m-->n["saldo=saldo-monto"]
+    l-->z
+    n-->z
+    j-->|sino|p{movimiento=='3'}
+    p-->|si|q{"monto>saldo:"}
+    q-->|si|r[raise saldo_insuficiente_exception]
+    q-->|no|s["movimiento = 'transferencia'"]
+    s-->t["saldo = saldo - monto"]
+    r-->z
+    t-->z
+    z-->u["with open(ruta, 'a') as archivo:"]
+    u-->v["escritor = csv.writer(archivo)"]
+    v-->w["escritor.writerow(linea)"]
+    w-->x((fin))
+```
+
+Grafo de complejidad ciclomatica de la función MODIFICAR_SALDO del apartado funciones:
+
+```mermaid
+graph
+    a((1))-->|I|b((2))
+    b-->|II|c((3))
+    c-->|III|d((4))
+    d-->|IV|e((5))
+    e-->|V|f((6))
+    f-->|VI|g((7))
+    g-->|si-VII|h((8))
+    h-->|VIII|i((9))
+    i-->|IX|z((10))
+    g-->|sino-XIV|j((15))
+    j-->|si-XV|k((16))
+    k-->|si-XVI|l((17))
+    k-->|no-XVIII|m((18))
+    m-->|XIX|n((19))
+    l-->|VII|z
+    n-->|XX|z
+    j-->|sino-XXI|p((20))
+    p-->|si-XXII|q((21))
+    q-->|si-XXIII|r((22))
+    q-->|no-XXV|s((23))
+    s-->|XXVI|t((24))
+    r-->|XXIV|z
+    t-->|XXVII|z
+    z-->|X|u((11))
+    u-->|XI|v((12))
+    v-->|XII|w((13))
+    w-->|XIII|x((14))
+    
+style g fill:#909    
+style j fill:#909 
+style k fill:#909 
+style p fill:#909 
+style q fill:#909 
+```
+Calculos complejidad cilomatica función MODIFICAR_SALDO del apartado funciones:
+
+-V(G)=Regiones=5.\
+-V(G)=A-N+2=27-24+2=5.\
+-V(G)=P+1=4+1=5.
+
+Caminos posibles función MODIFICAR_SALDO del apartado funciones:
+
+-1-2-3-4-5-6-7-8-9-10-11-12-13-14.\
+-1-2-3-4-5-6-7-15-16-17-10-11-12-13-14.\
+-1-2-3-4-5-6-7-15-16-18-19-10-11-12-13-14.\
+-1-2-3-4-5-6-7-15-20-21-22-10-11-12-13-14.\
+-1-2-3-4-5-6-7-15-20-21-23-24-10-11-12-13-14.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
