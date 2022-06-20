@@ -105,4 +105,46 @@ Caminos posibles función CLIENTES:
 
 -1-2-3-4-5-6-7-8-9
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Diagrama de flujo función CONSULTAS:
+
+```mermaid
+graph 
+a((Inicio))-->b("print('mensajes.elegir_moneda())")
+b-->c[/"moneda=input()"/]
+c-->d["saldo=funciones.obtener_saldo(dni)"]
+d-->e{moneda=='1':}
+e-->|si|f["saldo=str(saldo)+'Pesos'"]
+e-->|no|g{moneda=='2':}
+g-->|si|h["saldo=str(funciones.conversion_moneda_a_soles(saldo))+'Soles'"]
+f-->i((fin - return saldo))
+h-->i
+```
+
+Grafo de complejidad ciclomatica función CONSULTAS:
+
+```mermaid
+graph 
+a((1))-->|I|b((2))
+b-->|II|c((3))
+c-->|III|d((4))
+d-->|IV|e((5))
+e-->|si-V|f((6))
+e-->|no-VII|g((8))
+g-->|si-VIII|h((9))
+f-->|VI|i((7))
+h-->|IX|i
+
+style e fill:#909
+style g fill:#909
+```
+Calculos complejidad cilomatica función CONSULTAS:
+
+-V(G)=Regiones=2.\
+-V(G)=A-N+2=9-7+2=4.\
+-V(G)=P+1=2+1=3
+
+Caminos posibles función CONSULTAS:
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
