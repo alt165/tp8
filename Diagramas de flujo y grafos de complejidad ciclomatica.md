@@ -1,4 +1,4 @@
-####Diagrama de flujo función EXTRACCIONES. 
+Diagrama de flujo función EXTRACCIONES. 
 
 ```mermaid
 graph
@@ -24,7 +24,7 @@ graph
     P --> |no| D
   ```
 
-####Grafo de complejidad función EXTRACCIONES.
+Grafo de complejidad función EXTRACCIONES.
 
 ```mermaid
 graph 
@@ -51,13 +51,13 @@ graph
     P --> |no- XX| D
 ```  
 
-#####Calculos complejidad cilomatica función EXTRACCIONES:
+Calculos complejidad cilomatica función EXTRACCIONES:
 
-*V(G)=Regiones=4.
-*V(G)=A-N+2=20-18+2=4.
-*V(G)=P+1=3+1=4.
+-V(G)=Regiones=4.
+-V(G)=A-N+2=20-18+2=4.
+-V(G)=P+1=3+1=4.
 
-#####Caminos posibles función EXTRACCIONES:
+Caminos posibles función EXTRACCIONES:
 
 *1-2-3-4-5-6-7-8-9-10-11
 *1-2-3-4-5-6-7-12-13-14-15-16-17-18-11
