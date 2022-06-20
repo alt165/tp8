@@ -57,7 +57,7 @@ def principal():
         if opcion == "1":
             funciones.clear()
             print(mensajes.menu_consultas())
-            operacion=input() # ESTA OPCION NO LA ESTAMOS USANDO EN NINGUN LADO CUALQUIER OPERACION NOS LLEVA A CONSULTAR EL SALDO
+            operacion=input()
             funciones.clear()
             if operacion=='1':
                 saldo=consultas.consultar_saldo(cliente.dni)
@@ -65,7 +65,9 @@ def principal():
                 print(ticket)
                 mensajes.quiere_continuar()
             elif operacion=='2':
-                #ultimos movimientos 
+                ticket = consultas.ultimos_movimientos(cliente.dni)
+                print(ticket)
+                mensajes.quiere_continuar()
             
         elif opcion == "2":
             funciones.clear()
