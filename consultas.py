@@ -26,14 +26,15 @@ def ultimos_movimientos(dni):
         archivo = movimientos.readlines()
     largo = len(archivo)
     resultado = funciones.formatear_ticket("Fecha     Movimiento    Saldo    Monto"," ")
-    resultado
+    
     if largo > 10:
         largo = -10
     else:
         largo = largo * -1
-    while largo < 0:
-        resultado = resultado + archivo[largo]
-        largo = largo + 1
+        indice = -1
+    while indice >= largo:
+        resultado = resultado + archivo[indice]
+        indice = indice -1
     return resultado
 
 
