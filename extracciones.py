@@ -3,23 +3,13 @@ Función extraciones del menú perteneciente al Cajero Automatico InterBanca TP 
 """
 import funciones, clientes, mensajes
 
-def extraccion(dni):
-    saldo=funciones.selecionar_moneda(dni)
-    intento=0
-    while intento < 2:
-        monto=int(input('Ingrese el monto a retirar '))
-        intento+=1
-        if monto <= saldo:
-            cliente.saldo-=monto #no funciona, saldo no disminuye y es str contra int.
-            intento+=1
-            print('Retire su dinero')
-        elif monto > saldo:
-            print('No posee saldo suficiente en la cuenta.') 
-            if intento < 2:
-                print('1.Modificar monto.           2.Volver al menú de opciones.')
-                eleccion=input()
-                if eleccion =='2':
-                    intento+=1    
+def extraccion(dni, monto):
+    funciones.modificar_saldo(dni, "2", monto)
+    saldo = funciones.obtener_saldo(dni)
+    ticket = funciones.formatear_ticket(f"Retiró {monto}\n", f"Su saldo es: {saldo}")
+    print(ticket)
+    
+
             
                 
             

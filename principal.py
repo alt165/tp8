@@ -74,7 +74,14 @@ def principal():
             
         elif opcion == "2":
             funciones.clear()
-            extraccion=extracciones.extraccion(cliente.dni)
+            monto = input("Ingrese el monto a extraer: ")
+            try:
+                extraccion=extracciones.extraccion(cliente.dni, monto)
+                if mensajes.quiere_imprimir_ticket():
+                    funciones.guardar_ticket(ticket)
+            except:
+                print("El monto seleccionado es mayor al saldo")
+                input("Presione enter para continuar")
             
         elif opcion == "3":
             funciones.clear()
