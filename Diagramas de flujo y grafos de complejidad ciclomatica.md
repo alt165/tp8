@@ -489,3 +489,43 @@ Caminos posibles función CONVERSION_MONEDA_A_SOLES del apartado funciones:
 Diagrama de flujo de la función OBTENER_SALDO del apartado funciones:
 
 ```mermaid
+graph
+    a((inicio))-->b["ruta = './movimientos_clientes/' + dni + '.csv'"]
+    b-->c["with open(ruta, 'r') as f:"]
+    c-->d["lineas = csv.reader(f)"]
+    d-->e[for linea in lineas:]
+    e-->f[pass]
+    f-->e
+    e-->g["saldo=linea[-2]"]
+    g-->h(fin-return saldo)
+```
+
+Grafo de complejidad ciclomatica de la función OBTENER_SALDO del apartado funciones:
+
+```mermaid
+graph
+    a((1))-->|I|b((2))
+    b-->|II|c((3))
+    c-->|III|d((4))
+    d-->|IV|e((5))
+    e-->|V|f((6))
+    f-->|VI|e
+    e-->|VII|g((7))
+    g-->|VIII|h((8))
+
+style e fill:#909
+
+Calculos complejidad cilomatica función OBTENER_SALDO del apartado funciones:
+
+-V(G)=Regiones=2.\
+-V(G)=A-N+2=8-8+2=2..\
+-V(G)=P+1=1+1=2.
+
+Caminos posibles función OBTENER_SALDO del apartado funciones:
+
+-1-2-3-4-5-6-7-8
+-1-2-3-4-5-6-5-6-7-8
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
