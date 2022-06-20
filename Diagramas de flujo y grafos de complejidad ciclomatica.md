@@ -98,8 +98,8 @@ style F fill:#909
 Calculos complejidad cilomatica función CLIENTES:
 
 -V(G)=Regiones=1.\
--V(G)=A-N+2=8-9+2=1.\
--V(G)=P+1=1+1=2.
+-V(G)=A-N+2=9-9+2=1.\
+-V(G)=P+1=0+1=1.
 
 Caminos posibles función CLIENTES:
 
@@ -137,14 +137,72 @@ f-->|VI|i((7))
 h-->|IX|i
 
 style e fill:#909
-style g fill:#909
 ```
 Calculos complejidad cilomatica función CONSULTAS:
 
 -V(G)=Regiones=2.\
--V(G)=A-N+2=9-7+2=4.\
--V(G)=P+1=2+1=3
+-V(G)=A-N+2=9-9+2=2.\
+-V(G)=P+1=1+1=2
 
 Caminos posibles función CONSULTAS:
+-1-2-3-4-5-6-7
+-1-2-3-4-5-8-9-7
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Diagrama de flujo de la función ULTIMOS_MOVIMIENTOS:
+
+```mermaid
+graph 
+a((inicio))-->b["ruta='./movimientos_clientes/' + dni + '.csv'"]
+b-->c["with open(ruta, 'r') as movimientos:"]
+c-->d["archivo = movimientos.readlines()"]
+d-->f["largo=len(archivo)"]
+f-->g["resultado = funciones.formatear_ticket('Fecha     Movimiento    Saldo    Monto',' ')"]
+g-->h{largo>10:}
+h-->|si|i[largo=-10]
+h-->|no|j[largo*-1]
+i-->k[while largo<0:]
+j-->k
+k-->l["resultado=resultado+archivo[archivo]"]
+l-->m[largo=largo+1]
+m-->k
+k-->n(fin - return resultado)
+```
+
+Grafo de complejidad ciclomatica función ULTIMOS_MOVIMIENTOS:
+
+```mermaid
+graph 
+a((1))-->|I|b((2))
+b-->|II|c((3))
+c-->|III|d((4))
+d-->|IV|f((5))
+f-->|V|g((6))
+g-->|VI|h((7))
+h-->|si-VII|i((8))
+h-->|no-XIII|j((13))
+i-->|VIII|k((9))
+j-->|XIV|k
+k-->|IX|l((10))
+l-->|X|m((11))
+m-->|XI|k
+k-->|XII|n((12))
+
+style h fill:#909
+style k fill:#909
+```
+
+Calculos complejidad cilomatica función ULTIMOS_MOVIMIENTOS:
+
+-V(G)=Regiones=3.\
+-V(G)=A-N+2=14-12+2=4.\
+-V(G)=P+1=2+1=3
+
+Caminos posibles función ULTIMOS_MOVIMIENTOS:
+-1-2-3-4-5-6-7-8-9-10-11-12
+-1-2-3-4-5-6-7-12-9-10-11-12
+-1-2-3-4-5-6-7-8-9-10-11-9-10-11-9-12
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
