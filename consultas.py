@@ -8,8 +8,7 @@ import funciones, clientes, mensajes
 def consultar_saldo(dni):
     print(mensajes.elegir_moneda())
     moneda=input()
-    cliente=clientes.cliente(dni)
-    saldo=cliente.saldo
+    saldo = funciones.obtener_saldo(dni)
     if moneda=='1':
         saldo = str(saldo) + " Pesos"
     elif moneda=='2':

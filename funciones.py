@@ -1,4 +1,4 @@
-import os, mensajes, clientes
+import os, mensajes, clientes, csv
 
 def mensaje_entrada():
     """Esta función muestra el cartel con el nombre del banco
@@ -74,4 +74,41 @@ def conversion_moneda_a_soles(saldo):
     conversion = 0.030834509* float(saldo)
     conversion = round(conversion, 2)
     return conversion
+
+def obtener_saldo(dni):
+    """obtener_saldo(str) -> int
+    esta funcion busca el saldo en el archivo con los movimientos de la 
+    cuenta del cliente
+    """
+    ruta = "./movimientos_clientes/" + dni + ".csv"
+    with open(ruta, 'r') as f:
+        lineas = csv.reader(f)
+        for linea in lineas: # no encontré otra forma para iterar el archivo
+            pass
+    saldo = linea[-2]
+    return saldo
+
+def modificar_saldo(dni, movimiento, monto):
+    """esta funcion toma los datos de entrada y los agrega el final del
+    archivo con los movimientos de cada cliente, los movimientos posibles
+    son deposito == "1", extraccion == "2" y transferencia == "3".
+    """
+    ruta = "./movimientos_clientes/" + dni + ".csv"
+    with open("ruta", 'r') as f:
+        saldo = f.readlines()[-1]
+    print(saldo[-2])
+
+    fecha_hora = datetime.datetime.now()
+    fecha_hora = fecha_hora.strftime("%m/%d/%Y %H:%M")
+    if movimiento == "1":
+        movimiento = "deposito"
+        #saldo = saldo + monto
+    elif movimiento == "2":
+        movimiento = "extraccion"
+        #saldo = saldo - monto
+    elif movimiento == "3":
+        movimiento = "transferencia"
+        #saldo = saldo - monto
+    #with open(ruta, 'a') as archivo:
+
 
