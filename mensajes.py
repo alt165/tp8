@@ -63,3 +63,13 @@ def mensaje_salir():
      - Puede retirar su tarjeta - \n
     """
     return salida
+
+def quiere_imprimir_ticket():
+    opcion = ""
+    while opcion != "s" and opcion != "n":
+        opcion = input("Quiere imprimir el ticket: s/n -> ")
+        opcion = opcion.lower()
+    resultado = False
+    if opcion == "s":
+        resultado = True
+    return resultado

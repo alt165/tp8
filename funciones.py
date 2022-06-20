@@ -58,10 +58,12 @@ def formatear_ticket(texto1, texto2):
     return ticket
 
 
-def guardar_ticket(archivo, ticket):
+def guardar_ticket(ticket):
     """guardar_ticket(str, str) -> file
     esta funcion agrega texto a un archivo con todos los tickets impresos
     """
+    with open("tickets.txt", "a") as tickets:
+        tickets.write(ticket)
     
 def selecionar_moneda(dni):
     print(mensajes.elegir_moneda())

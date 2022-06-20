@@ -63,11 +63,14 @@ def principal():
                 saldo=consultas.consultar_saldo(cliente.dni)
                 ticket = funciones.formatear_ticket("\tSu saldo es: ", saldo)
                 print(ticket)
-                mensajes.quiere_continuar()
+                if mensajes.quiere_imprimir_ticket():
+                    funciones.guardar_ticket(ticket)
             elif operacion=='2':
                 ticket = consultas.ultimos_movimientos(cliente.dni)
                 print(ticket)
-                mensajes.quiere_continuar()
+                if mensajes.quiere_imprimir_ticket():
+                    funciones.guardar_ticket(ticket)
+
             
         elif opcion == "2":
             funciones.clear()
