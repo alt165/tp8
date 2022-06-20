@@ -105,6 +105,8 @@ Caminos posibles función CLIENTES:
 
 -1-2-3-4-5-6-7-8-9
 
+
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Diagrama de flujo función CONSULTAS:
@@ -206,3 +208,7 @@ Caminos posibles función ULTIMOS_MOVIMIENTOS:
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+graph 
+    a((inicio))-->b["string_bienvenida = mensajes.nombre_interbanca()"]
+    b-->c["string_bienvenida = string_bienvenida + 'Para utilizar el cajero presione 1:'"]
+    c-->d(fin-return string_bienvenida)
