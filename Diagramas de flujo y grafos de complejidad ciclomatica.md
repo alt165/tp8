@@ -1,67 +1,35 @@
 Diagrama de flujo función EXTRACCIONES. 
 
 ```mermaid
-graph
-    A([Inicio]) --> B(saldo=funciones.seleccionar_moneda) 
-    B --> C(intento=0)
-    C --> D[while intento < 2]
-    D --> E[/"monto=int(input('Ingrese el monto a retirar'))"/]
-    E --> F(intento+=1)
-    F --> G{monto <= saldo}
-    G --> |si| H[cliente.saldo-=monto]
-    H --> I(intento+=1)
-    I --> J("print('Retire su dinero')")
-    G --> |no| K{monto>saldo}
-    K --> |si| L("print('No posse saldo suficiente')")
-    L --> M{intento < 2}
-    M --> |si| N("print('1.Modificar monto.  2.Volver al menu')")
-    N --> O[/"eleccion=input()"/]
-    O --> P{eleccion=='2'}
-    P --> |si| Q[intento+=1]
-    Q --> R((Fin))
-    M --> R
-    J --> R
-    P --> |no| D
+graph 
+    a((inicio))-->b["funciones.modificar_saldo(dni, '2', monto)"]
+    b-->c["saldo = funciones.obtener_saldo(dni)"]
+    c-->d["ticket = funciones.formatear_ticket(f'Retiró {monto}\n', f'Su saldo es: {saldo}')"]
+    d-->e(" print(ticket)")
+    e-->f(fin-return ticket)
+
   ```
 
 Grafo de complejidad función EXTRACCIONES.
 
 ```mermaid
 graph 
-    A((1)) --> |I| B((2))
-    B --> |II|C((3))
-    C --> |III|D((4))
-    D --> |IV| E((5))
-    E --> |V|F((6))
-    F --> |VI|G((7))
-    G --> |si - VII| H((8))
-    H -->|VIII| I((9))
-    I -->|IX| J((10))
-    G --> |no - XI| K((12))
-    K --> |si - XII| L((13))
-    L --> |XIII|M((14))
-    M --> |si - XIV| N((15))
-    N --> |XV|O((16))
-    O --> |XVI|P((16))
-    P --> |si- XVII| Q((17))
-    Q --> |XVIII|R((11))
-    M --> |XIX|R
-    J -->|X| R
-    P --> |no- XX| D
+    a((1))-->|I|b((2))
+    b-->|II|c((3))
+    c-->|III|d((4))
+    d-->|IV|e((5))
+    e-->|V|f((6))
 ```  
 
 Calculos complejidad cilomatica función EXTRACCIONES:
 
--V(G)=Regiones=4.\
--V(G)=A-N+2=20-18+2=4.\
--V(G)=P+1=3+1=4.
+-V(G)=Regiones=1.\
+-V(G)=A-N+2=5-6+2=.1\
+-V(G)=P+1=0+1=1.
 
 Caminos posibles función EXTRACCIONES:
 
--1-2-3-4-5-6-7-8-9-10-11\
--1-2-3-4-5-6-7-12-13-14-15-16-17-18-11\
--1-2-3-4-5-6-7-12-13-14-11\
--1-2-3-4-5-6-7-12-13-14-15-16-17-4-5-6-7-12-13-14-11
+-1-2-3-4-5-6
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -82,8 +50,7 @@ graph
 
 Grafo de complejidad ciclomatica función CLIENTES:
 
-```mermaid
-graph 
+```mermaid 
 graph 
     A((1)) -->|I| B((2))
     B-->|II|C((3))
@@ -105,7 +72,7 @@ Calculos complejidad cilomatica función CLIENTES:
 
 Caminos posibles función CLIENTES:
 
--1-2-3-4-5-6-7-8-9.
+-1-2-3-4-5-6-7-8-9.\
 -1-2-3-4-5-8-9
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -165,8 +132,9 @@ f-->g["resultado = funciones.formatear_ticket('Fecha     Movimiento    Saldo    
 g-->h{largo>10:}
 h-->|si|i[largo=-10]
 h-->|no|j[largo*-1]
-i-->k[while largo<0:]
-j-->k
+i-->z[largo=-1]
+z-->k[while largo<0:]
+j-->z
 k-->l["resultado=resultado+archivo[archivo]"]
 l-->m[largo=largo+1]
 m-->k
@@ -184,28 +152,32 @@ d-->|IV|f((5))
 f-->|V|g((6))
 g-->|VI|h((7))
 h-->|si-VII|i((8))
-h-->|no-XIII|j((13))
-i-->|VIII|k((9))
-j-->|XIV|k
-k-->|IX|l((10))
-l-->|X|m((11))
-m-->|XI|k
-k-->|XII|n((12))
+h-->|no-XIV|j((14))
+i-->|VIII|z((9))
+z-->|IX|k((10))
+j-->|XV|z
+k-->|X|l((11))
+l-->|XI|m((12))
+m-->|XII|k
+k-->|XIII|n((13))
 
-style h fill:#909
 style k fill:#909
+style h fill:#909
+
 ```
 
 Calculos complejidad cilomatica función ULTIMOS_MOVIMIENTOS:
 
 -V(G)=Regiones=3.\
--V(G)=A-N+2=14-12+2=4.\
+-V(G)=A-N+2=15-14+2=3.\
 -V(G)=P+1=2+1=3
 
 Caminos posibles función ULTIMOS_MOVIMIENTOS:
--1-2-3-4-5-6-7-8-9-10-11-12\
--1-2-3-4-5-6-7-12-9-10-11-12\
--1-2-3-4-5-6-7-8-9-10-11-9-10-11-9-12
+
+-1-2-3-4-5-6-7-8-9-10-11-12-13.\
+-1-2-3-4-5-6-7-14-9-10-11-12-13.\
+-1-2-3-4-5-6-7-8-9-10-13.
+
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -264,7 +236,7 @@ graph
     d-->|IV|e((5))
     e-->|V|f((6))
     f-->|si-VI|g((7))
-    g-->|VIII|c((9))
+    g-->|VIII|c
     c-->|VII|h((8))
     f-->|IX|c
     
@@ -525,7 +497,7 @@ Calculos complejidad cilomatica función OBTENER_SALDO del apartado funciones:
 
 Caminos posibles función OBTENER_SALDO del apartado funciones:
 
--1-2-3-4-5-6-7-8
+-1-2-3-4-5-6-7-8\
 -1-2-3-4-5-6-5-6-7-8
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
