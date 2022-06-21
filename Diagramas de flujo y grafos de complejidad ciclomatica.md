@@ -1,3 +1,11 @@
+Diagrama de flujo función PRINCIPAL.
+
+```mermaid
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Diagrama de flujo función EXTRACCIONES. 
 
 ```mermaid
@@ -636,8 +644,34 @@ Caminos posibles función QUIERE_IMPRIMIR_TICKET del apartado funciones:
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Diagrama de flujo de la función QUIERE_CONTINUAR del apartado mensajes:
+Diagrama de flujo de la función TRANSFERENCIAS del apartado mensajes:
 
 ```mermaid
+graph 
+    a((inicio))-->b["funciones.modificar_saldo(dni, '3', monto)"]
+    b-->c["saldo = funciones.obtener_saldo(dni)"]
+    c-->d["ticket = funciones.formatear_ticket(f'Transfirió {monto}\n', f'A la cuenta: {destino}')"]
+    d-->e("print(ticket)")
+    e-->f(fin - return ticket)
+```
 
+Grafo de complejidad ciclomatica de la función TRANSFERENCIAS del apartado mensajes:
 
+```mermaid
+graph 
+    a((1))-->|I|b((2))
+    b-->|II|c((3))
+    c-->|III|d((4))
+    d-->|IV|e((5))
+    e-->|V|f((6))
+```
+
+Calculos complejidad cilomatica función TRANSFERENCIAS del apartado funciones:
+
+-V(G)=Regiones=1.\
+-V(G)=A-N+2=5-6+2=1.\
+-V(G)=P+1=0+1=1.
+
+Caminos posibles función TRANSFERENCIAS del apartado funciones:
+
+-1-2-3-4-5-6.
