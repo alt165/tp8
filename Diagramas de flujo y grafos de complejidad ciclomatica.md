@@ -28,7 +28,6 @@ Grafo de complejidad función EXTRACCIONES.
 
 ```mermaid
 graph 
-    Nombre[Grafo de complejidad ciclomatica EXTRACCIONES]
     A((1)) --> |I| B((2))
     B --> |II|C((3))
     C --> |III|D((4))
@@ -70,19 +69,21 @@ Diagrama de flujo de la función CLIENTES:
 
 ```mermaid 
 graph 
-    A((Inicio)) --> B["coincidencia=[]"]
+   A((Inicio)) --> B["coincidencia=[]"]
     B-->C[with open]
     C-->D["mis clientes = cvs.reader(archivo)"]
     D-->E[for line in mis_clientes:]
     E-->F{"line[1]==dni"}
     F-->|si|G[coincidencia = line]
-    G-->I["cliente_encontrado=cliente(coincidencia[0],(coincidencia[1],(coincidencia[2],(coincidencia[3])"]
-    I-->H((FIN - return))
+    G-->E
+    E-->I["cliente_encontrado=cliente(coincidencia[0],(coincidencia[1],(coincidencia[2],(coincidencia[3])"]
+    I-->H(FIN - return cliente_encontrado)
 ```
 
 Grafo de complejidad ciclomatica función CLIENTES:
 
 ```mermaid
+graph 
 graph 
     A((1)) -->|I| B((2))
     B-->|II|C((3))
@@ -90,22 +91,22 @@ graph
     D-->|IV|E((5))
     E-->|V|F((6))
     F-->|si-VI|G((7))
-    G-->|VII|I((8))
-    I-->|VIII|H((9))
+    G-->|VII|E
+    E-->|VIII|I((8))
+    I-->|IX|J((9))
 
-style F fill:#909
+style E fill:#909
 ```
 Calculos complejidad cilomatica función CLIENTES:
 
--V(G)=Regiones=1.\
--V(G)=A-N+2=9-9+2=1.\
--V(G)=P+1=0+1=1.
+-V(G)=Regiones=2.\
+-V(G)=A-N+2=9-9+2=2.\
+-V(G)=P+1=1+1=2.
 
 Caminos posibles función CLIENTES:
 
--1-2-3-4-5-6-7-8-9
-
-
+-1-2-3-4-5-6-7-8-9.
+-1-2-3-4-5-8-9
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
