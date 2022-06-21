@@ -198,10 +198,6 @@ Calculos complejidad cilomatica función PRINCIPAL:
 -V(G)=A-N+2=91-77+2=16.\
 -V(G)=P+1=15+1=16
 
-Caminos posibles función PRINCIPAL:
-
-
-
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Diagrama de flujo función EXTRACCIONES. 
 
