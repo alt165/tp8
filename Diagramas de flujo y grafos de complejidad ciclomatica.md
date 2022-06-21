@@ -1,7 +1,204 @@
 Diagrama de flujo función PRINCIPAL.
 
 ```mermaid
+graph 
+    a(inicio)-->b["funciones.limita_entrada(funciones.mensaje_entrada(), '1')"]
+    b-->c["funciones.clear()"]
+    c-->d("print('Inserte su tarjeta')")
+    d-->e["dni_tarjeta = funciones.leer_tarjeta()"]
+    e-->f[" permite_seguir = True "]
+    f-->g{"if dni_tarjeta != 0: "}
+    g-->|si|h["dni_cliente = ' '"]
+    h-->i[intentos_posibles = 3]
+    i-->j[ intento = 0]
+    j-->k["while dni_cliente != dni_tarjeta and intento < intentos_posibles:"]
+    k-->l["dni_cliente = input('Ingrese su dni: ')"]
+    l-->m[ intento = intento + 1]
+    m-->k
+    k-->n{"if intento > intentos_posibles:"}
+    n-->|si|ñ["permite_seguir = False"]
+    ñ-->o("print('Ha superado la cantidad de ingresos posibles')")
+    o-->p("print('Retire su tarjeta')")
+    p-->ZZ(FIN)
+    g-->|no|q[" permite_seguir = False"]
+    q-->ZZ
+    n-->|no|r{permite_seguir: }
+    r-->|si|s["clave_almacenada = funciones.obtener_clave(dni_cliente)"]
+    s-->t["intentos_posibles = 3"]
+    t-->v["intento = 0"]
+    v-->w["clave_cliente = ' ' "]
+    w-->x["while clave_cliente != clave_almacenada and intento < intentos_posibles:"]
+    x-->y["clave_cliente = input('Ingrese su clave: ')"]
+    y-->aa["intento = intento + 1"]
+    aa-->x
+    x-->bb{"intento > intentos_posibles: "}
+    bb-->|si|cc("print('Ha superado la cantidad de ingresos posibles')")
+    cc-->dd(" print('Su tarjeta ha sido retenida')")
+    dd-->ee["permite_seguir = False"]
+    ee-->ff["retener_tarjeta = True"]
+    ff-->ZZ
+    bb-->|no|gg["cliente = clientes.cliente(dni_cliente)"]
+    gg-->hh[continuar=True]
+    hh-->jj["while permite_seguir and continuar:"]
+    jj-->kk["funciones.clear()"]
+    kk-->ll("print(mensajes.menu())")
+    ll-->mm[/"opcion=input('')"/]
+    mm-->nn{"if opcion == '1':"}
+    nn-->|si|qq["funciones.clear()"]
+    qq-->qq1("print(mensajes.menu())")
+    qq1-->qq2[/"operacion=input()"/]
+    qq2-->qq3{"operacion=='1'"}
+    qq3-->|si|qq4["saldo=consultas.consultar_saldo(cliente.dni)"]
+    qq4-->qq5["ticket = funciones.formatear_ticket('\tSu saldo es: ', saldo)"]
+    qq5-->qq6("print(ticket)")
+    qq6-->qq7{"mensajes.quiere_imprimir_ticket():"}
+    qq7-->|si|qq8["funciones.guardar_ticket(ticket)"]
+    qq8-->jj
+    qq7-->|no|jj
+    qq3-->|no|qq9{operacion=='2':}
+    qq9-->|si|qq10["ticket = consultas.ultimos_movimientos(cliente.dni)"]
+    qq10-->qq11("print(ticket)")
+    qq11-->qq12{"mensajes.quiere_imprimir_ticket():"}
+    qq12-->|si|qq13["funciones.guardar_ticket(ticket)"]
+    qq13-->jj
+    qq12-->|no|jj
+    nn-->|no|oo{"elif opcion == '2':"}
+    oo-->|si|rr["funciones.clear()"]
+    rr-->rr1[/"monto = input('Ingrese el monto a extraer: ')"/]
+    rr1-->rr2["try:"]
+    rr2-->rr3["ticket = extracciones.extraccion(cliente.dni, monto)"]
+    rr3-->rr4{"if mensajes.quiere_imprimir_ticket():"}
+    rr4-->|si|rr5["funciones.guardar_ticket(ticket)"]
+    rr5-->jj
+    rr4-->|no|jj
+    rr2-->rr6["funciones.saldo_insuficiente_exception:"]
+    rr6-->rr7("print('El monto seleccionado es mayor al saldo')")
+    rr7-->rr8[/"input('Presione enter para continuar')"/]
+    oo-->|no|ss{"opcion == '3':"}
+    ss-->|si|ss1["funciones.clear()"]
+    ss1-->ss2[/"monto = input('Ingrese el monto a tranferir: ')"/]
+    ss2-->ss3[/"destino = input('Ingrese la cuenta destino: ')"/]
+    ss3-->ss4["try:"]
+    ss4-->ss5["ticket = transferencias.transferencia(cliente.dni, monto, destino)"]
+    ss5-->ss6{"mensajes.quiere_imprimir_ticket():"}
+    ss6-->|no|jj
+    ss6-->|si|ss7["funciones.guardar_ticket(ticket)"]
+    ss7-->jj
+    ss4-->ss8{"funciones.saldo_insuficiente_exception:"}
+    ss8-->ss9("print('El monto seleccionado es mayor al saldo')")
+    ss9-->ss10[/"input('Presione enter para continuar')"/]
+    ss10-->jj
+    ss-->|no|uu{"opcion == '4':"}
+    uu-->|si|uu1("print(mensajes.mensaje_salir())")
+    uu1-->uu2["continuar=False"]
+    uu-->jj
+    jj-->ZZ
+```
 
+Grafo de complejidad función PRINCIPAL.
+
+```mermaid
+graph 
+    a((1))-->|I|b((2))
+    b-->|II|c((3))
+    c-->|III|d((4))
+    d-->|IV|e((5))
+    e-->|V|f((6))
+    f-->|VI|g((7))
+    g-->|si-VII|h((8))
+    h-->|VIII|i((9))
+    i-->|IX|j((10))
+    j-->|X|k((11))
+    k-->|XI|l((12))
+    l-->|XII|m((13))
+    m-->|XIII|k
+    k-->|XIV|n((14))
+    n-->|si-XV|ñ((15))
+    ñ-->|XVI|o((16))
+    o-->|XVII|p((17))
+    p-->|XVIII|ZZ((18))
+    g-->|no-XIX|q((19))
+    q-->|XX|ZZ
+    n-->|no-XXI|r((20))
+    r-->|si-XXII|s((21))
+    s-->|XXIII|t((22))
+    t-->|XXIV|v((23))
+    v-->|XXV|w((24))
+    w-->|XXVI|x((25))
+    x-->|XXVII|y((26))
+    y-->|XXVIII|aa(27)
+    aa-->|XXIX|x
+    x-->|XXX|bb((28))
+    bb-->|si-XXXI|cc((29))
+    cc-->|XXXII|dd((30))
+    dd-->|XXXIII|ee((31))
+    ee-->|XXXIV|ff((32))
+    ff-->|XXXV|ZZ
+    bb-->|no-XXXVI|gg((33))
+    gg-->|XXXVII|hh((34))
+    hh-->|XXXVIII|jj((35))
+    jj-->|XXXIX|kk((36))
+    kk-->|XXXX|ll((37))
+    ll-->|XXXXI|mm((38))
+    mm-->|XXXXII|nn((39))
+    nn-->|si-XXXXIII|qq((40))
+    qq-->|XXXXIV|qq1((41))
+    qq1-->|XXXXV|qq2((42))
+    qq2-->|XXXXVI|qq3((43))
+    qq3-->|si-XXXXVII|qq4((44))
+    qq4-->|XXXXVIII|qq5((45))
+    qq5-->|XXXXIX|qq6((46))
+    qq6-->|L|qq7((47))
+    qq7-->|si-LI|qq8((48))
+    qq8-->|LII|jj
+    qq7-->|no-LIII|jj
+    qq3-->|no-LIV|qq9((49))
+    qq9-->|si-LV|qq10((50))
+    qq10-->|LVI|qq11((51))
+    qq11-->|LVII|qq12((52))
+    qq12-->|si-LVIII|qq13((53))
+    qq13-->|LIX|jj
+    qq12-->|no-LX|jj
+    nn-->|no-LXI|oo((54))
+    oo-->|si-LXII|rr((55))
+    rr-->|LXIII|rr1((56))
+    rr1-->|LXIV|rr2((57))
+    rr2-->|LXV|rr3((58))
+    rr3-->|LXVI|rr4((59))
+    rr4-->|si-LXVII|rr5((60))
+    rr5-->|LXVIII|jj
+    rr4-->|no-LXIX|jj
+    rr2-->|LXX|rr6((61))
+    rr6-->|LXXI|rr7((62))
+    rr7-->|LXXII|rr8((63))
+    oo-->|no-LXXIII|ss((64))
+    ss-->|si-LXXIV|ss1((65))
+    ss1-->|LXXV|ss2((66))
+    ss2-->|LXXVI|ss3((67))
+    ss3-->|LXXVII|ss4((68))
+    ss4-->|LXXVIII|ss5((69))
+    ss5-->|LXXIX|ss6(70)
+    ss6-->|no-LXXX|jj
+    ss6-->|si-LXXXI|ss7((71))
+    ss7-->|LXXXII|jj
+    ss4-->|LXXXIII|ss8((72))
+    ss8-->|LXXXIV|ss9((73))
+    ss9-->|LXXXV|ss10((74))
+    ss10-->|LXXXVI|jj
+    ss-->|no-LXXXVII|uu((75))
+    uu-->|si-LXXXVIII|uu1((76))
+    uu1-->|LXXXIX|uu2((77))
+    uu-->|LXXXX|jj
+    jj-->|LXXXXI|ZZ
+```
+
+Calculos complejidad cilomatica función PRINCIPAL:
+
+-V(G)=Regiones=16.\
+-V(G)=A-N+2=91-77+2=16.\
+-V(G)=P+1=15+1=16
+
+Caminos posibles función PRINCIPAL:
 
 
 
