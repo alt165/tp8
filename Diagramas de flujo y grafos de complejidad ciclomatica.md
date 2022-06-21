@@ -616,4 +616,55 @@ Caminos posibles función MODIFICAR_SALDO del apartado funciones:
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Diagrama de flujo de la función QUIERE_IMPRIMIR_TICKET del apartado mensajes:
+
+```mermaid
+graph
+    a((inicio))-->b["opcion =' '"]
+    b-->c["while opcion != 's' and opcion != 'n': "]
+    c-->d["opcion = input('Quiere imprimir el ticket: s/n -> ')"]
+    d-->e["opcion = opcion.lower()"]
+    e-->c
+    c-->f["resultado = False"]
+    f-->g{"opcion=='s'"}
+    g-->|si|h[resultado=True]
+    h-->i(fin-return resultado)
+    g-->i
+```
+Grafo de complejidad ciclomatica de la función QUIERE_IMPRIMIR_TICKET del apartado mensajes:
+
+```mermaid
+graph
+    a((1))-->|I|b((2))
+    b-->|II|c((3))
+    c-->|III|d((4))
+    d-->|IV|e((5))
+    e-->|V|c
+    c-->|VI|f((6))
+    f-->|VII|g((7))
+    g-->|si-VIII|h((8))
+    h-->|IX|i((9))
+    g-->|X|i
+
+style c fill:#909 
+style g fill:#909 
+```
+Calculos complejidad cilomatica función QUIERE_IMPRIMIR_TICKET del apartado funciones:
+
+-V(G)=Regiones=3.\
+-V(G)=A-N+2=10-9+2=3.\
+-V(G)=P+1=2+1=3.
+
+Caminos posibles función QUIERE_IMPRIMIR_TICKET del apartado funciones:
+
+-1-2-3-4-5-3-6-7-8-9.\
+-1-2-3-4-5-3-6-7-9.\
+-1-2-3-6-7-9.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Diagrama de flujo de la función QUIERE_CONTINUAR del apartado mensajes:
+
+```mermaid
+
 
