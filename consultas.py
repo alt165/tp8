@@ -38,11 +38,6 @@ def ultimos_movimientos(dni):
     return resultado
 
 
-    
-def movimientos():
-    #funcion que guarda los movimientos de la cuenta.
-    return movimientos
-
 
 
         
